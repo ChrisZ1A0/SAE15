@@ -1,0 +1,2 @@
+Flag[P] (PUSH),Flag[S] (SYN),Flag[.] (ACK),Nombre total de trames,nombre de request,nombre de reply,nombre de sequence,nombre de acknowledg,nombre de window
+217,650,164,1145,42,42,957,385,1035

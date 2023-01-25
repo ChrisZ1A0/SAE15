@@ -6,7 +6,7 @@ import numpy as np
 
 
 #Here we will open and read our untreated file that we will treat and extract the important data from
-fichier=open("C:/Users/Administrateur/Desktop/SAE15/DumpFile.txt", "r")
+fichier=open("C:/Users/cekzi/Desktop/SAE15/Exam.txt", "r")
 
 #création des listes = creating lists to fill each one with the convenable data in the tcmpdump
 ipsr=[]
@@ -148,14 +148,14 @@ data = [A,P,S]
 explode=(0, 0, 0)
 plt.pie(data, explode=explode, labels=name, autopct='%1.1f%%', startangle=90, shadow=True)
 plt.axis('equal')
-plt.savefig("C:/Users/Administrateur/Desktop/graphe1.png")
+plt.savefig("C:/Users/cekzi/Desktop/graphe1.png")
 plt.show()
   #circular graphic for request and reply 
 name2 = ['Request' , 'Reply']
 data2 = [req,rep]  
 explode=(0,0)
 plt.pie(data2,explode=explode,labels=name2, autopct='%1.1f%%',startangle=90, shadow=True)
-plt.savefig("C:/Users/Administrateur/Desktop/graphe2.png")
+plt.savefig("C:/Users/cekzi/Desktop/graphe2.png")
 plt.show()
 
 
@@ -183,14 +183,14 @@ htmlcontenu='''
        <br>Nombre de flag [.] (ACK) = %s
        <br>
        <br>
-       <img src="C:/Users/Administrateur/Desktop/graphe1.png">
+       <img src="C:/Users/cekzi/Desktop/graphe1.png">
        <h3> Nombre des requests et replys </h3>
        Request = %s 
        <br>
        Reply = %s
        <br>
        <br>
-       <img src="C:/Users/Administrateur/Desktop/graphe2.png">
+       <img src="C:/Users/cekzi/Desktop/graphe2.png">
        <h3>Statistiques entre seq et win et ack </h3>
        Nombre de seq = %s
            <br>
@@ -205,21 +205,21 @@ htmlcontenu='''
 '''%(framecounter,flagcounterP,flagcounterS,flagcounter,requestcounter,replycounter,seqcounter,wincounter,ackcounter)
 
 #ouverture d'un fichier csv = open a csv file for data extracted from txt file untreated 
-with open('C:/Users/Administrateur/Desktop/données.csv', 'w', newline='') as fichiercsv:
+with open('C:/Users/cekzi/Desktop/données.csv', 'w', newline='') as fichiercsv:
     writer = csv.writer(fichiercsv)
     writer.writerow(['Heure','IP source','IP destination','Flag','Seq','Length'])
     writer.writerows(zip(heure,ipsr,ipde,flag,seq,longueur))
     fichiercsv.close()
     
 #ouverture d'un fichier csv    = open a csv file for different stats
-with open('C:/Users/Administrateur/Desktop/Stats.csv', 'w', newline='') as fichier2:
+with open('C:/Users/cekzi/Desktop/Stats.csv', 'w', newline='') as fichier2:
     writer = csv.writer(fichier2)
     writer.writerow(['Flag[P] (PUSH)','Flag[S] (SYN)','Flag[.] (ACK)','Nombre total de trames',"nombre de request","nombre de reply","nombre de sequence","nombre de acknowledg","nombre de window"])
     writer.writerows(zip(flagcounterP,flagcounterS,flagcounter,framecounter,requestcounter,replycounter,seqcounter,ackcounter,wincounter))
     fichier2.close()
     
 #partie page  web = open a web page with important information and statistics
-with open("C:/Users/Administrateur/Desktop/data.html","w") as html:
+with open("C:/Users/cekzi/Desktop/data.html","w") as html:
     html.write(htmlcontenu)
     print("page web créée avec succès")
 
